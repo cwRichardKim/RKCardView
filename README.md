@@ -25,3 +25,14 @@ Change the size and the card responds in turn
 [card addBlurToCoverPhoto:YES];
 ```
 ![blur](http://i.imgur.com/gA6Ahrdl.png)
+
+##Usage
+```obj-c
+    RKCardView* cardView= [[RKCardView alloc]initWithFrame:CGRectMake(BUFFERX, BUFFERY, self.view.frame.size.width-2*BUFFERX, self.view.frame.size.height-2*BUFFERY)];
+    
+    cardView.coverImageView.image = [UIImage imageNamed:@"exampleCover"];
+    cardView.profileImageView.image = [UIImage imageNamed:@"exampleProfile"];
+    cardView.titleLabel.text = @"Richard Kim";
+    [cardView addBlurToCoverPhoto:YES];
+    [self.view addSubview:cardView];
+```
