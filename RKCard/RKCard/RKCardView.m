@@ -12,8 +12,8 @@
 #define CORNER_RATIO 0.015
 #define CP_RATIO 0.38
 #define PP_RATIO 0.247
-#define PP_X_RATIO 0.0552
-#define PP_Y_RATIO 0.246
+#define PP_X_RATIO 0.03
+#define PP_Y_RATIO 0.213
 #define PP_BUFF 3
 
 @implementation RKCardView {
