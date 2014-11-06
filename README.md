@@ -10,7 +10,7 @@ This is an example of a project that uses the repo
 ![Example](http://i.imgur.com/YVaSExwl.png)
 
 ##Standard Template:
-This is what you get.  It starts with 2 defaukt example photos (of me)
+This is what you get.  It starts with 2 default example photos (of me)
 
 ![template](http://i.imgur.com/shA68PXl.png)
 
