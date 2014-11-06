@@ -28,11 +28,11 @@ Change the size and the card responds in turn
 
 ##Usage
 ```obj-c
-    RKCardView* cardView= [[RKCardView alloc]initWithFrame:CGRectMake(BUFFERX, BUFFERY, self.view.frame.size.width-2*BUFFERX, self.view.frame.size.height-2*BUFFERY)];
+    RKCardView* cardView= [[RKCardView alloc]initWithFrame:CGRectMake(x origin, y origin, card width, card height)];
     
-    cardView.coverImageView.image = [UIImage imageNamed:@"exampleCover"];
-    cardView.profileImageView.image = [UIImage imageNamed:@"exampleProfile"];
+    cardView.coverImageView.image = [UIImage imageNamed:@"your cover photo"];
+    cardView.profileImageView.image = [UIImage imageNamed:@"your profile picture"];
     cardView.titleLabel.text = @"Richard Kim";
-    [cardView addBlurToCoverPhoto:YES];
+    [cardView addBlurToCoverPhoto:YES]; // comment this out if you don't want blur
     [self.view addSubview:cardView];
 ```
