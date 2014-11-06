@@ -18,7 +18,7 @@ This is what you get.  It starts with 2 defaukt example photos (of me)
 Change the size and the card responds in turn
 
 ![responsive](http://i.imgur.com/KmG01Kql.png)
-![responsive2](http://i.imgur.com/YVKSVvd1.png)
+![responsive2](http://i.imgur.com/YVKSVvdl.png)
 
 ##Add blur!
 ```objc
