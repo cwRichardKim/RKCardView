@@ -11,8 +11,7 @@ This is a **template** for making beautiful cards
 ##Responsive Design!
 Change the size and the card responds in turn
 
-![responsive](http://i.imgur.com/KmG01Kql.png)
-![responsive2](http://i.imgur.com/YVKSVvdl.png)
+![responsive](http://i.imgur.com/JjogZGt.png)
 
 ##Usage
 ```obj-c
