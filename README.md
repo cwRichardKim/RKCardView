@@ -4,27 +4,19 @@ Beautiful Twitter / Facebook style cards (built with [@JaredTMoskowitz](https://
 
 This is a **template** for making beautiful cards
 
-###Example
-This is an example of a project that uses the repo
+###Anatomy
 
-![Example](http://i.imgur.com/YVaSExwl.png)
+![Anatomy](http://i.imgur.com/bRZpKIZ.png)
 
-##Standard Template:
-This is what you get.  It starts with 2 default example photos (of me)
+##Methods:
 
-![template](http://i.imgur.com/shA68PXl.png)
+![Methods](http://i.imgur.com/XjQs0ka.png)
 
 ##Responsive Design!
 Change the size and the card responds in turn
 
 ![responsive](http://i.imgur.com/KmG01Kql.png)
 ![responsive2](http://i.imgur.com/YVKSVvdl.png)
-
-##Add blur!
-```objc
-[card addBlurToCoverPhoto:YES];
-```
-![blur](http://i.imgur.com/gA6Ahrdl.png)
 
 ##Usage
 ```obj-c
@@ -33,6 +25,7 @@ Change the size and the card responds in turn
     cardView.coverImageView.image = [UIImage imageNamed:@"your cover photo"];
     cardView.profileImageView.image = [UIImage imageNamed:@"your profile picture"];
     cardView.titleLabel.text = @"Richard Kim";
-    [cardView addBlurToCoverPhoto:YES]; // comment this out if you don't want blur
+    [cardView addBlur]; // comment this out if you don't want blur
+    [cardView addShadow]; // comment this out if you don't want a shadow
     [self.view addSubview:cardView];
 ```
