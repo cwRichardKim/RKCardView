@@ -13,6 +13,11 @@ Change the size and the card responds in turn
 
 ![responsive](http://i.imgur.com/JjogZGtl.png)
 
+##Examples
+An example of RKCardView used in a real project
+
+![Example](http://i.imgur.com/YVaSExwl.png)
+
 ##Usage
 ```obj-c
     RKCardView* cardView= [[RKCardView alloc]initWithFrame:CGRectMake(x origin, y origin, card width, card height)];
