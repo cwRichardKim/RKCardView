@@ -23,19 +23,24 @@
 @synthesize profileImageView;
 @synthesize coverImageView;
 @synthesize titleLabel;
-@synthesize panGestureRecognizer;
-@synthesize originalPoint;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self setupView];
-//        panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];
-        
-//        [self addGestureRecognizer:panGestureRecognizer];
     }
     return self;
+}
+
+- (void)addShadow
+{
+    self.layer.shadowOpacity = 0.15;
+}
+
+- (void)removeShadow
+{
+    self.layer.shadowOpacity = 0;
 }
 
 -(void)setupView
@@ -43,9 +48,8 @@
     self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius = self.frame.size.width * CORNER_RATIO;
     self.layer.shadowRadius = 3;
-    self.layer.shadowOpacity = 0.2;
+    self.layer.shadowOpacity = 0;
     self.layer.shadowOffset = CGSizeMake(1, 1);
-    self.clipsToBounds = YES;
     [self setupPhotos];
 }
 
@@ -60,6 +64,14 @@
     pp_circle.layer.cornerRadius = pp_circle.frame.size.height/2;
     pp_mask.layer.cornerRadius = pp_mask.frame.size.height/2;
     cp_mask.backgroundColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1];
+    
+    CGFloat cornerRadius = self.layer.cornerRadius;
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:cp_mask.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = cp_mask.bounds;
+    maskLayer.path = maskPath.CGPath;
+    cp_mask.layer.mask = maskLayer;
+    
     
     UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -78,7 +90,10 @@
     cp_mask.clipsToBounds = YES;
     pp_mask.clipsToBounds = YES;
     
-    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(pp_circle.frame.origin.x+pp_circle.frame.size.width, cp_mask.frame.size.height + self.frame.size.height * LABEL_Y_RATIO, self.frame.size.width, 26)];
+    CGFloat titleLabelX = pp_circle.frame.origin.x+pp_circle.frame.size.width;
+    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(titleLabelX, cp_mask.frame.size.height + 7, self.frame.size.width - titleLabelX, 26)];
+    titleLabel.adjustsFontSizeToFitWidth = NO;
+    titleLabel.lineBreakMode = NSLineBreakByClipping;
     
     [titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20]];
     [titleLabel setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
@@ -91,13 +106,14 @@
     [coverImageView addSubview:visualEffectView];
 }
 
--(void)addBlurToCoverPhoto:(BOOL)add
+-(void)addBlur
 {
-    if (add) {
-        visualEffectView.alpha = 1;
-    } else {
-        visualEffectView.alpha = 0;
-    }
+    visualEffectView.alpha = 1;
+}
+
+-(void)removeBlur
+{
+    visualEffectView.alpha = 0;
 }
 
 @end

@@ -14,10 +14,9 @@
 @property (nonatomic)UIImageView *coverImageView;
 @property (nonatomic)UILabel *titleLabel;
 
-// Dragging Attributes
-@property (nonatomic, strong)UIPanGestureRecognizer *panGestureRecognizer;
-@property (nonatomic)CGPoint originalPoint;
-
--(void)addBlurToCoverPhoto:(BOOL)add;
+- (void)addBlur;
+- (void)removeBlur;
+- (void)addShadow;
+- (void)removeShadow;
 
 @end

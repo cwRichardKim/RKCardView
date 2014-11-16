@@ -28,7 +28,8 @@
     cardView.coverImageView.image = [UIImage imageNamed:@"exampleCover"];
     cardView.profileImageView.image = [UIImage imageNamed:@"exampleProfile"];
     cardView.titleLabel.text = @"Richard Kim";
-    [cardView addBlurToCoverPhoto:YES];
+//    [cardView addBlur];
+//    [cardView addShadow];
     [self.view addSubview:cardView];
 }
 
