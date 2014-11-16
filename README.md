@@ -6,7 +6,7 @@ This is a **template** for making beautiful cards
 
 ![Anatomy](http://i.imgur.com/bRZpKIZ.png)
 
-![Methods](http://i.imgur.com/XjQs0ka.png)
+![Methods](http://i.imgur.com/xXTljbM.png)
 
 ##Responsive Design!
 Change the size and the card responds in turn
