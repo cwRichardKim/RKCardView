@@ -12,6 +12,7 @@ This is a **template** for making beautiful cards
 Change the size and the card responds in turn
 
 ![responsive](http://i.imgur.com/JjogZGtl.png)
+![responsive2](http://i.imgur.com/shA68PXl.png)
 
 ##Examples
 An example of RKCardView used in a real project
