@@ -15,6 +15,7 @@
 #define PP_X_RATIO 0.03
 #define PP_Y_RATIO 0.213
 #define PP_BUFF 3
+#define LABEL_Y_RATIO .012
 
 @implementation RKCardView {
     UIVisualEffectView *visualEffectView;
@@ -77,7 +78,7 @@
     cp_mask.clipsToBounds = YES;
     pp_mask.clipsToBounds = YES;
     
-    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(pp_circle.frame.origin.x+pp_circle.frame.size.width, cp_mask.frame.size.height + 7, self.frame.size.width, 26)];
+    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(pp_circle.frame.origin.x+pp_circle.frame.size.width, cp_mask.frame.size.height + self.frame.size.height * LABEL_Y_RATIO, self.frame.size.width, 26)];
     
     [titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20]];
     [titleLabel setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
