@@ -4,11 +4,7 @@ Beautiful Twitter / Facebook style cards (built with [@JaredTMoskowitz](https://
 
 This is a **template** for making beautiful cards
 
-###Anatomy
-
 ![Anatomy](http://i.imgur.com/bRZpKIZ.png)
-
-##Methods:
 
 ![Methods](http://i.imgur.com/XjQs0ka.png)
 
