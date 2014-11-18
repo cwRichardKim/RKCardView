@@ -22,6 +22,11 @@ An example of RKCardView used in a real project
 ![Example](http://i.imgur.com/YVaSExwl.png)
 
 ##Usage
+__Pod__
+```objc-c
+pod 'RKDropdownAlert'
+```
+
 ```obj-c
     RKCardView* cardView= [[RKCardView alloc]initWithFrame:CGRectMake(x origin, y origin, card width, card height)];
     
