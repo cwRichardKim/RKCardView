@@ -24,7 +24,7 @@ An example of RKCardView used in a real project
 ##Usage
 __Pod__
 ```objc-c
-pod 'RKDropdownAlert'
+pod 'RKCardView'
 ```
 
 ```obj-c
