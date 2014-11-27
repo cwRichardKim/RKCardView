@@ -1,11 +1,3 @@
-#
-#  Be sure to run `pod spec lint RKSwipeBetweenViewControllers.podspec' to ensure this is a
-#  valid spec and to remove all comments including this before submitting the spec.
-#
-#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
-#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
-#
-
 Pod::Spec.new do |s|
 
 # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -15,14 +7,14 @@ Pod::Spec.new do |s|
 #  summary should be tweet-length, and the description more in depth.
 #
 
-s.name         = "RKDropdownAlert"
+s.name         = "RKCardView"
 s.version      = "0.1.0"
-s.summary      = "iOS: an extremely simple (and customizeable) alert alternative based on Facebook's app Slingshot"
+s.summary      = "iOS: Simple and beautiful Twitter / Facebook style card template"
 
-s.description  = "A UIAlertView alternative that mimics the iPhone's push notification system', -UIAlertView, -SVProgressHUD, -objectivec, -ios, -iphone, -xcode"
+s.description  = "A template for all projects that use cards.  Works especially well with the Twitter or Facebook API', -cardView, -Card, -UI, -Tinder, -iphone, -xcode"
 
-s.homepage     = "https://github.com/cwRichardKim/RKDropdownAlert"
-s.screenshots  = "http://i.imgur.com/OlYystx.gif"
+s.homepage     = "https://github.com/cwRichardKim/RKCardView"
+s.screenshots  = "http://i.imgur.com/shA68PXl.png"
 
 
 # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -70,7 +62,7 @@ s.platform     = :ios, "7.0"
 #  Supports git, hg, bzr, svn and HTTP.
 #
 
-s.source       = { :git => "https://github.com/cwRichardKim/RKDropdownAlert.git", :tag => s.version.to_s }
+s.source       = { :git => "https://github.com/cwRichardKim/RKCardView.git", :tag => s.version.to_s }
 
 
 # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -81,7 +73,7 @@ s.source       = { :git => "https://github.com/cwRichardKim/RKDropdownAlert.git"
 #  Not including the public_header_files will make all headers public.
 #
 
-s.source_files  = 'SlingshotDropdownAlert/RKDropdownAlert.h', 'SlingshotDropdownAlert/RKDropdownAlert.m'
+s.source_files  = 'RKCard/RKCard/RKCardView.h', 'RKCard/RKCard/RKCardView.m'
 
 # s.public_header_files = "Classes/**/*.h"
 
