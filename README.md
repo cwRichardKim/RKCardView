@@ -3,6 +3,7 @@ RKCardView
 Beautiful Twitter / Facebook style cards (built with [@JaredTMoskowitz](https://twitter.com/jaredtmoskowitz))
 
 [Follow me on Twitter](https://twitter.com/cwRichardKim)
+
 Or [Check out my Medium posts on UI / UX](https://medium.com/@cwRichardKim)
 
 This is a **template** for making beautiful cards
