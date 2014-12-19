@@ -31,8 +31,17 @@
  */
 #import <UIKit/UIKit.h>
 
+@protocol RKCardViewDelegate <NSObject>
+@optional
+- (void)nameTap;
+- (void)coverPhotoTap;
+- (void)profilePhotoTap;
+@end
+
+
 @interface RKCardView : UIView
 
+@property (nonatomic)id<RKCardViewDelegate> delegate;
 @property (nonatomic)UIImageView *profileImageView;
 @property (nonatomic)UIImageView *coverImageView;
 @property (nonatomic)UILabel *titleLabel;

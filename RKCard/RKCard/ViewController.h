@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RKCardView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <RKCardViewDelegate>
 
 
 @end
