@@ -28,6 +28,7 @@
     cardView.coverImageView.image = [UIImage imageNamed:@"exampleCover"];
     cardView.profileImageView.image = [UIImage imageNamed:@"exampleProfile"];
     cardView.titleLabel.text = @"Richard Kim";
+    cardView.delegate = self;
 //    [cardView addBlur];
 //    [cardView addShadow];
     [self.view addSubview:cardView];
@@ -38,4 +39,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+// Optional RKCardViewDelegate methods
+
+-(void)nameTap {
+    NSLog(@"Taped on name");
+}
+
+-(void)coverPhotoTap {
+    NSLog(@"Taped on cover photo");
+}
+
+-(void)profilePhotoTap {
+    NSLog(@"Taped on profile photo");
+}
 @end

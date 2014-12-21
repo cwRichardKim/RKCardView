@@ -30,6 +30,8 @@
  
  */
 
+
+
 #import "RKCardView.h"
 
 // Responsive view ratio values
@@ -44,6 +46,7 @@
 @implementation RKCardView {
     UIVisualEffectView *visualEffectView;
 }
+@synthesize delegate;
 @synthesize profileImageView;
 @synthesize coverImageView;
 @synthesize titleLabel;
@@ -52,6 +55,15 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self setupView];
+    }
+    return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if(self) {
         [self setupView];
     }
     return self;
@@ -114,21 +126,59 @@
     cp_mask.clipsToBounds = YES;
     pp_mask.clipsToBounds = YES;
     
+    // Setup the label
     CGFloat titleLabelX = pp_circle.frame.origin.x+pp_circle.frame.size.width;
     titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(titleLabelX, cp_mask.frame.size.height + 7, self.frame.size.width - titleLabelX, 26)];
     titleLabel.adjustsFontSizeToFitWidth = NO;
     titleLabel.lineBreakMode = NSLineBreakByClipping;
-    
     [titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20]];
     [titleLabel setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
     titleLabel.text = @"Title Label";
-   
+
+    // Register touch events on the label
+    titleLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleLabelTab)];
+    [titleLabel addGestureRecognizer:tapGesture];
+    
+    // Register touch events on the cover image
+    coverImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGestureCover =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverPhotoTab)];
+    [coverImageView addGestureRecognizer:tapGestureCover];
+
+    // Register touch events on the profile imate
+    profileImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGestureProfile =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ProfilePhotoTab)];
+    [profileImageView addGestureRecognizer:tapGestureProfile];
+    
+    // building upp the views
     [self addSubview:titleLabel];
     [self addSubview:cp_mask];
     [self addSubview:pp_circle];
     [self addSubview:pp_mask];
     [coverImageView addSubview:visualEffectView];
 }
+
+-(void)titleLabelTab{
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(nameTap)]) {
+        [self.delegate nameTap];
+    }
+}
+
+-(void)coverPhotoTab{
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(coverPhotoTap)]) {
+        [self.delegate coverPhotoTap];
+    }
+}
+
+-(void)ProfilePhotoTab{
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(profilePhotoTap)]) {
+        [self.delegate profilePhotoTap];
+    }
+}
+
 
 -(void)addBlur
 {
