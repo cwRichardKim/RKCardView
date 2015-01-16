@@ -39,3 +39,7 @@ pod 'RKCardView'
     [cardView addShadow]; // comment this out if you don't want a shadow
     [self.view addSubview:cardView];
 ```
+
+### Areas for Improvement / Involvement
+* More rigorous responsive design (making it look nicer with a wider range of dimensions)
+* Other custom properties (eg: tap to expand, double sided, tap to flip)
