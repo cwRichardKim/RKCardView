@@ -138,19 +138,19 @@
     // Register touch events on the label
     titleLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleLabelTab)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleLabelTap)];
     [titleLabel addGestureRecognizer:tapGesture];
     
     // Register touch events on the cover image
     coverImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGestureCover =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverPhotoTab)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverPhotoTap)];
     [coverImageView addGestureRecognizer:tapGestureCover];
 
     // Register touch events on the profile imate
     profileImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGestureProfile =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ProfilePhotoTab)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profilePhotoTap)];
     [profileImageView addGestureRecognizer:tapGestureProfile];
     
     // building upp the views
@@ -161,19 +161,19 @@
     [coverImageView addSubview:visualEffectView];
 }
 
--(void)titleLabelTab{
+-(void)titleLabelTap{
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(nameTap)]) {
         [self.delegate nameTap];
     }
 }
 
--(void)coverPhotoTab{
+-(void)coverPhotoTap{
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(coverPhotoTap)]) {
         [self.delegate coverPhotoTap];
     }
 }
 
--(void)ProfilePhotoTab{
+-(void)profilePhotoTap{
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(profilePhotoTap)]) {
         [self.delegate profilePhotoTap];
     }
