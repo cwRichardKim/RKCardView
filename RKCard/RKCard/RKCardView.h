@@ -41,7 +41,7 @@
 
 @interface RKCardView : UIView
 
-@property (nonatomic)id<RKCardViewDelegate> delegate;
+@property (nonatomic, weak) IBOutlet id<RKCardViewDelegate> delegate;
 @property (nonatomic)UIImageView *profileImageView;
 @property (nonatomic)UIImageView *coverImageView;
 @property (nonatomic)UILabel *titleLabel;
