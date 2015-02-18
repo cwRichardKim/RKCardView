@@ -204,7 +204,7 @@
     //titleLabel constraints
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[cp_mask]-0-[titleLabel]" options:0 metrics:nil views:nameDict]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[pp_mask]-0-[titleLabel]-0-|" options:0 metrics:nil views:nameDict]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[pp_mask]-0-[titleLabel]-0-|" options:0 metrics:nil views:nameDict]];
     [titleLabel addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:26.0f]];
     
 }
