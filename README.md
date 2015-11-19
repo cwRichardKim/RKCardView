@@ -2,7 +2,7 @@ RKCardView
 ==========
 Beautiful Twitter / Facebook style cards (built with [@JaredTMoskowitz](https://twitter.com/jaredtmoskowitz))
 
-[Follow me on Twitter @cwRichardKim](https://twitter.com/cwRichardKim)
+[Support](http://cwrichardkim.com) or [Twitter @cwRichardKim](https://twitter.com/cwRichardKim)
 
 Or [Check out my Medium posts on UI / UX](https://medium.com/@cwRichardKim)
 
