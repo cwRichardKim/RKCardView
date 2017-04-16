@@ -12,18 +12,18 @@ This is a **template** for making beautiful cards
 
 ![Methods](http://i.imgur.com/j86bi2u.png)
 
-##Responsive Design!
+## Responsive Design!
 Change the size and the card responds in turn
 
 ![responsive](http://i.imgur.com/JjogZGtl.png)
 ![responsive2](http://i.imgur.com/shA68PXl.png)
 
-##Examples
+## Examples
 An example of RKCardView used in a real project
 
 ![Example](http://i.imgur.com/YVaSExwl.png)
 
-##Usage
+## Usage
 __Pod__
 ```objc-c
 pod 'RKCardView'
