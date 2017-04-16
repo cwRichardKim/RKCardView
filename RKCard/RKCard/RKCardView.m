@@ -94,30 +94,40 @@
     CGFloat height = self.frame.size.height;
     CGFloat width = self.frame.size.width;
     UIView *cp_mask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, width, height * CP_RATIO)];
-    UIView *pp_mask = [[UIView alloc]initWithFrame:CGRectMake(width * PP_X_RATIO, height * PP_Y_RATIO, height * PP_RATIO, height *PP_RATIO)];
+    [cp_mask setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    UIView *pp_mask = [[UIView alloc]initWithFrame:CGRectMake(width * PP_X_RATIO, height * PP_Y_RATIO, height * PP_RATIO, height * PP_RATIO)];
+    [pp_mask setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
     UIView *pp_circle = [[UIView alloc]initWithFrame:CGRectMake(pp_mask.frame.origin.x - PP_BUFF, pp_mask.frame.origin.y - PP_BUFF, pp_mask.frame.size.width + 2* PP_BUFF, pp_mask.frame.size.height + 2*PP_BUFF)];
+    [pp_circle setTranslatesAutoresizingMaskIntoConstraints:NO];
     pp_circle.backgroundColor = [UIColor whiteColor];
     pp_circle.layer.cornerRadius = pp_circle.frame.size.height/2;
+    
     pp_mask.layer.cornerRadius = pp_mask.frame.size.height/2;
     cp_mask.backgroundColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1];
     
-    CGFloat cornerRadius = self.layer.cornerRadius;
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:cp_mask.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = cp_mask.bounds;
-    maskLayer.path = maskPath.CGPath;
-    cp_mask.layer.mask = maskLayer;
+    //    CGFloat cornerRadius = self.layer.cornerRadius;
+    //    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:cp_mask.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+    //    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    //    maskLayer.frame = cp_mask.bounds;
+    //    maskLayer.path = maskPath.CGPath;
+    //    cp_mask.layer.mask = maskLayer;
     
     
     UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    
+    [visualEffectView setTranslatesAutoresizingMaskIntoConstraints:NO];
     visualEffectView.frame = cp_mask.frame;
     visualEffectView.alpha = 0;
     
     profileImageView = [[UIImageView alloc]init];
+    [profileImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
     profileImageView.frame = CGRectMake(0, 0, pp_mask.frame.size.width, pp_mask.frame.size.height);
-    coverImageView = [[UIImageView alloc]init];
+    [profileImageView setContentMode:UIViewContentModeScaleAspectFill];
+    
+    coverImageView = [[UIImageView alloc] init];
+    [coverImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
     coverImageView.frame = cp_mask.frame;
     [coverImageView setContentMode:UIViewContentModeScaleAspectFill];
     
@@ -127,14 +137,16 @@
     pp_mask.clipsToBounds = YES;
     
     // Setup the label
-    CGFloat titleLabelX = pp_circle.frame.origin.x+pp_circle.frame.size.width;
-    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(titleLabelX, cp_mask.frame.size.height + 7, self.frame.size.width - titleLabelX, 26)];
+    CGFloat titleLabelX = pp_circle.frame.origin.x + pp_circle.frame.size.width;
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabelX - 25, cp_mask.frame.size.height, self.frame.size.width - titleLabelX + 25, 26)];
+    [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     titleLabel.adjustsFontSizeToFitWidth = NO;
     titleLabel.lineBreakMode = NSLineBreakByClipping;
     [titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20]];
-    [titleLabel setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+    [titleLabel setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.85]];
+    [titleLabel setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.85]];
     titleLabel.text = @"Title Label";
-
+    
     // Register touch events on the label
     titleLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture =
@@ -146,7 +158,7 @@
     UITapGestureRecognizer *tapGestureCover =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverPhotoTap)];
     [coverImageView addGestureRecognizer:tapGestureCover];
-
+    
     // Register touch events on the profile imate
     profileImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGestureProfile =
@@ -159,7 +171,47 @@
     [self addSubview:pp_circle];
     [self addSubview:pp_mask];
     [coverImageView addSubview:visualEffectView];
+    
+    
+    NSDictionary *nameDict = @{@"cp_mask" : cp_mask, @"pp_mask" : pp_mask, @"titleLabel" : titleLabel, @"coverImageView" : coverImageView, @"profileImageView" : profileImageView, @"visualEffectView" : visualEffectView, @"pp_circle" : pp_circle};
+    
+    //cover photo constraints
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[cp_mask]-0-|" options:0 metrics:nil views:nameDict]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[cp_mask]" options:0 metrics:nil views:nameDict]];
+    [cp_mask addConstraint:[NSLayoutConstraint constraintWithItem:cp_mask attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:(height * CP_RATIO)]];
+    
+    [cp_mask addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[coverImageView]-0-|" options:0 metrics:nil views:nameDict]];
+    [cp_mask addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[coverImageView]-0-|" options:0 metrics:nil views:nameDict]];
+    
+    [cp_mask addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[visualEffectView]-0-|" options:0 metrics:nil views:nameDict]];
+    [cp_mask addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[visualEffectView]-0-|" options:0 metrics:nil views:nameDict]];
+    
+    //profilePhotoConstraints
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:pp_mask attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeadingMargin multiplier:1.0 constant:(width * PP_X_RATIO)]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:pp_mask attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:cp_mask attribute:NSLayoutAttributeBottom multiplier:1.0 constant:26]];
+    
+    [pp_mask addConstraint:[NSLayoutConstraint constraintWithItem:pp_mask attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:(height * PP_RATIO)]];
+    [pp_mask addConstraint:[NSLayoutConstraint constraintWithItem:pp_mask attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:(height * PP_RATIO)]];
+    
+    [pp_mask addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[profileImageView]-0-|" options:0 metrics:nil views:nameDict]];
+    [pp_mask addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[profileImageView]-0-|" options:0 metrics:nil views:nameDict]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:pp_circle attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:pp_mask attribute:NSLayoutAttributeLeading multiplier:1.0 constant:(-1.0f * PP_BUFF)]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:pp_circle attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:pp_mask attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:(PP_BUFF)]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:pp_circle attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:pp_mask attribute:NSLayoutAttributeTop multiplier:1.0 constant:(-1.0f * PP_BUFF)]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:pp_circle attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:pp_mask attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(PP_BUFF)]];
+    
+    //titleLabel constraints
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[cp_mask]-0-[titleLabel]" options:0 metrics:nil views:nameDict]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[pp_mask]-0-[titleLabel]-0-|" options:0 metrics:nil views:nameDict]];
+    [titleLabel addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:26.0f]];
+    
 }
+
+/*
+ [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[label]-20-|" options:0 metrics:nil views:nameDict]];
+ */
 
 -(void)titleLabelTap{
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(nameTap)]) {
